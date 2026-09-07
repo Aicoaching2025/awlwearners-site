@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AW Learners</title>
+<meta name="description" content="Clinically Informed Academics® at Academics West — building executive-functioning skills through Microsoft 365.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --navy:#14254e;
+    --navy-deep:#0d1a38;
+    --navy-soft:#1e315c;
+    --maize:#f2a83c;
+    --maize-bright:#f7b955;
+    --cream:#faf6ee;
+    --cream-2:#f1e9d9;
+    --ink:#16233f;
+    --muted:#5b678a;
+    --white:#ffffff;
+    --line:rgba(20,37,78,.12);
+    --line-light:rgba(255,255,255,.16);
+    --shadow:0 18px 50px -24px rgba(13,26,56,.55);
+    color-scheme:light;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:"Fraunces",Georgia,"Times New Roman",serif;font-weight:600;text-wrap:balance;line-height:1.08;margin:0}
+  p{margin:0}
+  a{color:inherit}
+  .wrap{width:min(1140px,92vw);margin-inline:auto}
+  .eyebrow{
+    font-size:.74rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--maize);display:inline-flex;align-items:center;gap:.55em;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--maize);display:inline-block;border-radius:2px}
+  .tm{font-size:.5em;vertical-align:super;font-weight:500;letter-spacing:normal}
+
+  /* ---------- Nav ---------- */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(13,26,56,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-light)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:.9rem 0}
+  .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--white)}
+  .monogram{
+    width:42px;height:42px;border-radius:50%;flex:none;
+    background:radial-gradient(circle at 30% 25%,var(--maize-bright),var(--maize));
+    display:grid;place-items:center;color:var(--navy-deep);
+    font-family:"Fraunces",serif;font-weight:700;font-size:1.05rem;letter-spacing:-.02em;
+    box-shadow:0 6px 16px -6px rgba(242,168,60,.7);
+  }
+  .brand b{font-family:"Fraunces",serif;font-weight:600;font-size:1.18rem;line-height:1;display:block}
+  .brand span{display:block;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--maize);margin-top:.2rem}
+  nav.links{display:flex;align-items:center;gap:1.75rem}
+  nav.links a{color:rgba(255,255,255,.82);text-decoration:none;font-size:.92rem;font-weight:500;transition:color .18s}
+  nav.links a:hover{color:var(--white)}
+  nav.links a.ext::after{content:"↗";font-size:.8em;margin-left:.25em;opacity:.7}
+  .btn{
+    display:inline-flex;align-items:center;gap:.5em;text-decoration:none;font-weight:600;font-size:.92rem;
+    padding:.62rem 1.15rem;border-radius:999px;transition:transform .15s,box-shadow .15s,background .15s;white-space:nowrap;
+  }
+  .btn-gold{background:var(--maize);color:var(--navy-deep);box-shadow:0 8px 20px -8px rgba(242,168,60,.65)}
+  .btn-gold:hover{transform:translateY(-1px);background:var(--maize-bright)}
+  .btn-ghost{border:1.5px solid var(--line-light);color:var(--white)}
+  .btn-ghost:hover{border-color:var(--maize);color:var(--maize)}
+  .nav-cta{display:flex;gap:.6rem;align-items:center}
+  .menu-btn{display:none}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;background:var(--navy-deep);color:var(--white);overflow:hidden}
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(60% 90% at 82% 8%,rgba(242,168,60,.20),transparent 60%),
+      radial-gradient(50% 70% at 12% 100%,rgba(30,49,92,.9),transparent 70%);
+    pointer-events:none;
+  }
+  .hero-inner{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:3.5rem;align-items:center;padding:5rem 0 5.5rem}
+  .hero h1{font-size:clamp(2.5rem,5.2vw,4rem);letter-spacing:-.015em}
+  .hero h1 em{font-style:italic;color:var(--maize)}
+  .hero .lede{margin-top:1.4rem;font-size:1.13rem;color:rgba(255,255,255,.82);max-width:34ch}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.2rem}
+  .hero-note{margin-top:1.6rem;font-size:.85rem;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:.5rem}
+  .hero-note b{color:var(--maize-bright);font-weight:600}
+  /* portal card */
+  .portal{
+    background:linear-gradient(160deg,rgba(30,49,92,.95),rgba(13,26,56,.95));
+    border:1px solid var(--line-light);border-radius:20px;padding:1.7rem;box-shadow:var(--shadow);
+  }
+  .portal h3{color:var(--white);font-size:1.15rem;margin-bottom:.2rem}
+  .portal .sub{font-size:.85rem;color:rgba(255,255,255,.62);margin-bottom:1.2rem}
+  .app-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem}
+  .app{
+    display:flex;flex-direction:column;align-items:center;gap:.45rem;text-decoration:none;
+    padding:.85rem .4rem;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid var(--line-light);
+    color:rgba(255,255,255,.9);font-size:.72rem;font-weight:500;text-align:center;transition:background .16s,transform .16s;
+  }
+  .app:hover{background:rgba(242,168,60,.12);transform:translateY(-2px)}
+  .app .glyph{width:26px;height:26px}
+  .portal .signin{
+    display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:1.1rem;
+    padding:.7rem;border-radius:12px;background:var(--maize);color:var(--navy-deep);
+    text-decoration:none;font-weight:600;font-size:.9rem;transition:background .16s;
+  }
+  .portal .signin:hover{background:var(--maize-bright)}
+
+  /* ---------- Section scaffolding ---------- */
+  section{padding:5rem 0}
+  .band-cream{background:var(--cream)}
+  .band-cream-2{background:var(--cream-2)}
+  .band-navy{background:var(--navy);color:var(--white)}
+  .sec-head{max-width:60ch}
+  .sec-head h2{font-size:clamp(1.9rem,3.6vw,2.8rem);letter-spacing:-.01em}
+  .band-navy .sec-head h2{color:var(--white)}
+  .sec-head p{margin-top:1rem;font-size:1.06rem;color:var(--muted)}
+  .band-navy .sec-head p{color:rgba(255,255,255,.75)}
+
+  /* CIA intro */
+  .cia{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+  .cia .body p+p{margin-top:1rem}
+  .cia .body p{color:var(--muted);font-size:1.05rem}
+  .cia .body strong{color:var(--ink)}
+  .pull{
+    background:var(--navy);color:var(--white);border-radius:22px;padding:2.4rem;position:relative;box-shadow:var(--shadow);
+  }
+  .pull .mark{font-family:"Fraunces",serif;font-size:3.5rem;color:var(--maize);line-height:.6;height:1.4rem;display:block}
+  .pull q{quotes:none;font-family:"Fraunces",serif;font-size:1.5rem;font-weight:500;line-height:1.35;display:block;margin-top:.4rem}
+  .pull .attr{margin-top:1.4rem;font-size:.85rem;color:rgba(255,255,255,.65);letter-spacing:.02em}
+
+  /* Skills grid */
+  .skills{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:2.6rem}
+  .skill{
+    background:var(--white);border:1px solid var(--line);border-radius:16px;padding:1.5rem;
+    display:flex;flex-direction:column;gap:.6rem;transition:transform .18s,box-shadow .18s;
+  }
+  .skill:hover{transform:translateY(-3px);box-shadow:0 20px 40px -28px rgba(13,26,56,.4)}
+  .skill .ico{width:34px;height:34px;color:var(--navy);flex:none}
+  .skill h3{font-size:1.18rem}
+  .skill p{font-size:.94rem;color:var(--muted)}
+  .skill .tool{
+    margin-top:auto;display:inline-flex;align-items:center;gap:.45em;font-size:.76rem;font-weight:600;
+    letter-spacing:.02em;color:var(--navy);background:var(--cream-2);padding:.35rem .7rem;border-radius:999px;align-self:flex-start;
+  }
+  .skill .tool .dot{width:7px;height:7px;border-radius:50%;background:var(--maize)}
+
+  /* Toolkit strip */
+  .toolkit{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem 2.4rem;margin-top:2.6rem}
+  .tk{display:flex;gap:1rem;align-items:flex-start}
+  .tk .glyph{width:34px;height:34px;flex:none;margin-top:.15rem}
+  .tk h3{font-size:1.05rem;color:var(--white);margin-bottom:.25rem}
+  .tk p{font-size:.9rem;color:rgba(255,255,255,.7)}
+
+  /* Academics West tie-in */
+  .tie{display:grid;grid-template-columns:.9fr 1.1fr;gap:3rem;align-items:center}
+  .tie .card{
+    background:var(--navy-deep);color:var(--white);border-radius:22px;padding:2.6rem;box-shadow:var(--shadow);
+    background-image:radial-gradient(70% 90% at 85% 10%,rgba(242,168,60,.16),transparent 60%);
+  }
+  .tie .card .eyebrow{color:var(--maize-bright)}
+  .tie .card h3{color:var(--white);font-size:1.8rem;margin:.7rem 0 1rem}
+  .tie .card p{color:rgba(255,255,255,.78);font-size:1rem}
+  .tie .body h2{font-size:clamp(1.8rem,3.4vw,2.5rem)}
+  .tie .body p{margin-top:1rem;color:var(--muted);font-size:1.05rem}
+  .facts{display:flex;gap:2.2rem;margin-top:1.8rem;flex-wrap:wrap}
+  .fact b{font-family:"Fraunces",serif;font-size:1.9rem;color:var(--navy);display:block;line-height:1}
+  .fact span{font-size:.82rem;color:var(--muted);letter-spacing:.02em}
+  .tie .body .btn{margin-top:1.9rem}
+  .btn-navy{background:var(--navy);color:var(--white)}
+  .btn-navy:hover{background:var(--navy-soft);transform:translateY(-1px)}
+
+  /* Footer */
+  footer{background:var(--navy-deep);color:rgba(255,255,255,.7);padding:3.5rem 0 2rem}
+  .foot-top{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;padding-bottom:2rem;border-bottom:1px solid var(--line-light)}
+  .foot-brand{max-width:34ch}
+  .foot-brand .brand{margin-bottom:.9rem}
+  .foot-brand p{font-size:.9rem;color:rgba(255,255,255,.6)}
+  .foot-cols{display:flex;gap:3.5rem;flex-wrap:wrap}
+  .foot-col h4{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--maize);margin:0 0 .9rem;font-family:"Figtree",sans-serif;font-weight:600}
+  .foot-col a{display:block;color:rgba(255,255,255,.72);text-decoration:none;font-size:.92rem;margin-bottom:.55rem;transition:color .16s}
+  .foot-col a:hover{color:var(--maize-bright)}
+  .foot-bottom{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-top:1.6rem;font-size:.82rem;color:rgba(255,255,255,.5)}
+
+  :focus-visible{outline:2.5px solid var(--maize);outline-offset:3px;border-radius:4px}
+
+  @media (max-width:900px){
+    .hero-inner,.cia,.tie{grid-template-columns:1fr;gap:2.5rem}
+    .skills,.toolkit{grid-template-columns:repeat(2,1fr)}
+    nav.links{display:none}
+  }
+  @media (max-width:560px){
+    .skills,.toolkit,.app-grid{grid-template-columns:1fr}
+    .app-grid{grid-template-columns:repeat(3,1fr)}
+    .nav-cta .btn-ghost{display:none}
+    section{padding:3.5rem 0}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">
+      <span class="monogram">AW</span>
+      <span><b>AW Learners</b><span>Clinically Informed Academics<span class="tm">®</span></span></span>
+    </a>
+    <nav class="links">
+      <a href="#program">The Program</a>
+      <a href="#skills">Skills</a>
+      <a href="#toolkit">Microsoft 365</a>
+      <a href="https://academicswest.com" class="ext" target="_blank" rel="noopener">Academics West</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="https://academicswest.com" target="_blank" rel="noopener">Request Info</a>
+      <a class="btn btn-gold" href="https://www.office.com" target="_blank" rel="noopener">Student Sign-in</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" style="padding:0">
+    <div class="wrap hero-inner">
+      <div>
+        <span class="eyebrow">Clinically Informed Academics<span class="tm">®</span></span>
+        <h1 style="margin-top:1rem">The skills to <em>learn</em>, the tools to <em>do</em>.</h1>
+        <p class="lede">AW Learners builds executive-functioning skills in K–12 students — planning, organization, focus, follow-through — using the same Microsoft 365 tools they'll carry into college and career.</p>
+        <div class="hero-cta">
+          <a class="btn btn-gold" href="https://www.office.com" target="_blank" rel="noopener">Sign in to Microsoft 365</a>
+          <a class="btn btn-ghost" href="https://academicswest.com/clinically-informed-academics/" target="_blank" rel="noopener">See how it works</a>
+        </div>
+        <p class="hero-note">A program of <b>Academics West</b> · Brooklyn, NY</p>
+      </div>
+
+      <!-- Student portal card -->
+      <div class="portal" aria-label="Student Microsoft 365 tools">
+        <h3>Your learning workspace</h3>
+        <p class="sub">Every AW Learner gets an @awlearners.org account.</p>
+        <div class="app-grid">
+          <a class="app" href="https://outlook.office.com" target="_blank" rel="noopener">
+            <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="var(--maize)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            Outlook
+          </a>
+          <a class="app" href="https://www.onenote.com" target="_blank" rel="noopener">
+            <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="var(--maize)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h13l3 3v13H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>
+            OneNote
+          </a>
+          <a class="app" href="https://onedrive.live.com" target="_blank" rel="noopener">
+            <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="var(--maize)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 17h11a3 3 0 0 0 .5-5.96A5 5 0 0 0 8 9.5 3.5 3.5 0 0 0 6 17Z"/></svg>
+            OneDrive
+          </a>
+          <a class="app" href="https://teams.microsoft.com" target="_blank" rel="noopener">
+            <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="var(--maize)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 19a6 6 0 0 1 12 0"/><circle cx="17.5" cy="9.5" r="2"/><path d="M16 13.5a4.5 4.5 0 0 1 5 4.5"/></svg>
+            Teams
+          </a>
+          <a class="app" href="https://to-do.office.com" target="_blank" rel="noopener">
+            <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="var(--maize)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 3 3 5-6"/><path d="M14 8h6M14 13h6M14 18h4"/></svg>
+            To Do
+          </a>
+          <a class="app" href="https://www.office.com" target="_blank" rel="noopener">
+            <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="var(--maize)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
+            All apps
+          </a>
+        </div>
+        <a class="signin" href="https://www.office.com" target="_blank" rel="noopener">Sign in →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAM / CIA -->
+  <section id="program" class="band-cream">
+    <div class="wrap cia">
+      <div class="body">
+        <span class="eyebrow">What we do</span>
+        <h2 style="margin-top:1rem;font-size:clamp(1.9rem,3.6vw,2.8rem)">Clinically Informed Academics,<span class="tm" style="font-size:.4em">®</span> in practice.</h2>
+        <p style="margin-top:1.2rem"><strong>AW Learners is where executive functioning becomes a daily habit.</strong> Many bright students stumble not on the content, but on the <em>doing</em> — remembering the assignment, starting it, keeping materials in one place, managing time.</p>
+        <p>Our clinically informed approach names those skills explicitly and teaches them through real tools. Students don't just hear "get organized" — they build a system in OneDrive, capture their thinking in OneNote, and run their day from Outlook and To&nbsp;Do. The strategy and the software are taught together, so the skill sticks.</p>
+        <p>It's the same digital fluency employers expect — learned early, and learned with support.</p>
+      </div>
+      <figure class="pull" style="margin:0">
+        <span class="mark">&ldquo;</span>
+        <q>When a student can plan the week, find their work, and start without a battle, everything else in school gets easier.</q>
+        <div class="attr">— The AW Learners approach to executive functioning</div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- SKILLS mapped to tools -->
+  <section id="skills" class="band-cream-2">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Executive functioning</span>
+        <h2 style="margin-top:1rem">Six skills, six tools that build them.</h2>
+        <p>Each core executive-functioning domain is paired with a Microsoft 365 tool students use to practice it — so an abstract skill becomes a concrete, repeatable routine.</p>
+      </div>
+      <div class="skills">
+        <article class="skill">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/><path d="m8 14 2 2 4-4"/></svg>
+          <h3>Planning &amp; Prioritization</h3>
+          <p>Break big assignments into steps, put them on a calendar, and decide what comes first.</p>
+          <span class="tool"><span class="dot"></span>Outlook Calendar</span>
+        </article>
+        <article class="skill">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h5l2 2h9v11a2 2 0 0 1-2 2H4z"/><path d="M4 5v14"/></svg>
+          <h3>Organization</h3>
+          <p>One home for every file, named and foldered — nothing lost, nothing "on the other laptop."</p>
+          <span class="tool"><span class="dot"></span>OneDrive</span>
+        </article>
+        <article class="skill">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11l3 3v13H5z"/><path d="M9 9h6M9 13h6M9 17h4"/></svg>
+          <h3>Working Memory &amp; Note-taking</h3>
+          <p>Capture instructions and ideas the moment they land, in notebooks organized by class.</p>
+          <span class="tool"><span class="dot"></span>OneNote</span>
+        </article>
+        <article class="skill">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg>
+          <h3>Task Initiation &amp; Follow-through</h3>
+          <p>A clear next action and a checkable list turn "I'll do it later" into "it's done."</p>
+          <span class="tool"><span class="dot"></span>Microsoft To Do</span>
+        </article>
+        <article class="skill">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></svg>
+          <h3>Communication &amp; Collaboration</h3>
+          <p>Ask for help, share work, and join class conversations with a professional voice.</p>
+          <span class="tool"><span class="dot"></span>Teams &amp; Outlook</span>
+        </article>
+        <article class="skill">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M8 15l2.5-3 2 2L16 9"/></svg>
+          <h3>Self-monitoring &amp; Review</h3>
+          <p>Draft, revise, and check work — using version history to see growth over time.</p>
+          <span class="tool"><span class="dot"></span>Word · Excel · PowerPoint</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- MICROSOFT 365 TOOLKIT -->
+  <section id="toolkit" class="band-navy">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">The toolkit</span>
+        <h2 style="margin-top:1rem">Real software, real accounts, from day one.</h2>
+        <p>Every student receives a full Microsoft 365 account on the awlearners.org domain — the professional-grade suite, set up with the supports they need to use it well.</p>
+      </div>
+      <div class="toolkit">
+        <div class="tk">
+          <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="var(--maize)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          <div><h3>Outlook Email</h3><p>A real @awlearners.org address, with calendar and reminders built in.</p></div>
+        </div>
+        <div class="tk">
+          <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="var(--maize)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 17h11a3 3 0 0 0 .5-5.96A5 5 0 0 0 8 9.5 3.5 3.5 0 0 0 6 17Z"/></svg>
+          <div><h3>OneDrive</h3><p>1 TB of cloud storage — every file safe, synced, and shareable.</p></div>
+        </div>
+        <div class="tk">
+          <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="var(--maize)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11l3 3v13H5z"/><path d="M9 9h6M9 13h6M9 17h4"/></svg>
+          <div><h3>OneNote</h3><p>Digital binders for every class — typed, drawn, or dictated.</p></div>
+        </div>
+        <div class="tk">
+          <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="var(--maize)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 19a6 6 0 0 1 12 0"/><circle cx="17.5" cy="9.5" r="2"/><path d="M16 13.5a4.5 4.5 0 0 1 5 4.5"/></svg>
+          <div><h3>Teams</h3><p>Class channels, assignments, and a place to ask for help.</p></div>
+        </div>
+        <div class="tk">
+          <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="var(--maize)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+          <div><h3>Word · Excel · PowerPoint</h3><p>The full desktop and web apps for writing, data, and presenting.</p></div>
+        </div>
+        <div class="tk">
+          <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="var(--maize)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/><circle cx="12" cy="12" r="3"/></svg>
+          <div><h3>Copilot Chat</h3><p>An AI study partner with enterprise-grade data protection.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACADEMICS WEST TIE-IN -->
+  <section class="band-cream">
+    <div class="wrap tie">
+      <div class="card">
+        <span class="eyebrow">Part of</span>
+        <h3>Academics West</h3>
+        <p>An independent, high-support college preparatory school helping K–12 students with emotional and learning differences blossom into productive, self-valuing leaders.</p>
+        <a class="btn btn-gold" href="https://academicswest.com" target="_blank" rel="noopener" style="margin-top:1.6rem">Visit academicswest.com</a>
+      </div>
+      <div class="body">
+        <span class="eyebrow">One school, one system</span>
+        <h2 style="margin-top:1rem">Built by the people who know your student.</h2>
+        <p>AW Learners isn't a bolt-on app. It's the digital backbone of the Academics West approach — the same clinically informed philosophy, delivered through the tools students use every day.</p>
+        <div class="facts">
+          <div class="fact"><b>K–12</b><span>Every grade supported</span></div>
+          <div class="fact"><b>1:1</b><span>Tools per student</span></div>
+          <div class="fact"><b>Brooklyn</b><span>Campus coming soon</span></div>
+        </div>
+        <a class="btn btn-navy" href="https://academicswest.com" target="_blank" rel="noopener">Book a tour</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a class="brand" href="#top">
+          <span class="monogram">AW</span>
+          <span><b>AW Learners</b><span>Clinically Informed Academics<span class="tm">®</span></span></span>
+        </a>
+        <p>Executive-functioning skills and digital fluency for K–12 learners. A program of Academics West.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>Program</h4>
+          <a href="#program">What we do</a>
+          <a href="#skills">The skills</a>
+          <a href="#toolkit">Microsoft 365</a>
+        </div>
+        <div class="foot-col">
+          <h4>Students</h4>
+          <a href="https://www.office.com" target="_blank" rel="noopener">Sign in to Microsoft 365</a>
+          <a href="https://outlook.office.com" target="_blank" rel="noopener">Email</a>
+          <a href="https://onedrive.live.com" target="_blank" rel="noopener">OneDrive</a>
+        </div>
+        <div class="foot-col">
+          <h4>Academics West</h4>
+          <a href="https://academicswest.com" target="_blank" rel="noopener">Main site</a>
+          <a href="https://academicswest.com" target="_blank" rel="noopener">Admissions</a>
+          <a href="https://academicswest.com" target="_blank" rel="noopener">Request info</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="yr"></span> Academics West. Clinically Informed Academics® is a registered trademark of Academics West.</span>
+      <span>awlearners.org</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
